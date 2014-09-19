@@ -1596,10 +1596,8 @@
       <id>hadoop-1.0</id>
       <activation>
         <property>
-            <property>
-                <name>hadoop.profile</name>
-                <value>1.0</value>
-            </property>
+          <name>hadoop.profile</name>
+          <value>1.0</value>
         </property>
       </activation>
       <properties>
