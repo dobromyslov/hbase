@@ -36,7 +36,7 @@
   <groupId>org.apache.hbase</groupId>
   <artifactId>hbase</artifactId>
   <packaging>jar</packaging>
-  <version>0.94.18</version>
+  <version>0.94.18-hadoop-2.4.0</version>
   <name>HBase</name>
   <description>
     HBase is the &amp;lt;a href="http://hadoop.apache.org"&amp;rt;Hadoop&lt;/a&amp;rt; database. Use it when you need
@@ -1034,7 +1034,7 @@
     <slf4j.version>1.4.3</slf4j.version>
     <log4j.version>1.2.16</log4j.version>
     <mockito-all.version>1.8.5</mockito-all.version>
-    <protobuf.version>2.4.0a</protobuf.version>
+    <protobuf.version>2.5.0</protobuf.version>
     <stax-api.version>1.0.1</stax-api.version>
     <thrift.version>0.8.0</thrift.version>
     <zookeeper.version>3.4.5</zookeeper.version>
@@ -1588,12 +1588,18 @@
       </build>
     </profile>
 
-    <!-- profile for building against Hadoop 1.0.x: This is the default. -->
+    <!-- profile for building against Hadoop 1.0.x.
+         Activate using:
+         mvn -Dhadoop.profile=1.0
+     -->
     <profile>
       <id>hadoop-1.0</id>
       <activation>
         <property>
-          <name>!hadoop.profile</name>
+            <property>
+                <name>hadoop.profile</name>
+                <value>1.0</value>
+            </property>
         </property>
       </activation>
       <properties>
@@ -2229,19 +2235,17 @@
     </profile>
 
     <!--
-      profile for building against Hadoop 2.0.0-alpha. Activate using:
-       mvn -Dhadoop.profile=2.0
+        profile for building against Hadoop 2.5. Default profile.
     -->
     <profile>
       <id>hadoop-2.0</id>
       <activation>
-        <property>
-          <name>hadoop.profile</name>
-          <value>2.0</value>
-        </property>
+          <property>
+              <name>!hadoop.profile</name>
+          </property>
       </activation>
       <properties>
-        <hadoop.version>2.0.0-alpha</hadoop.version>
+        <hadoop.version>2.4.0</hadoop.version>
         <slf4j.version>1.6.1</slf4j.version>
       </properties>
       <dependencies>
